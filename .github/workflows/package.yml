@@ -2,11 +2,6 @@ name: Deploy (CD)
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        type: text
-        required: true
-        description: package version
 
 jobs:
   publish:
@@ -26,9 +21,9 @@ jobs:
 
       - name: 📦 Package library
         run: |
-          dotnet restore
-          dotnet build -c Release
-          dotnet pack -c Release -p:Version=${{ inputs.version }} -o ./dist
+          dotnet restore ./Nuget.sln
+          dotnet build -c Release ./Nuget.sln
+          dotnet pack -c Release -o ./dist ./Nuget.sln
 
       - name: ☁ Publish library
         run: |
