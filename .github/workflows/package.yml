@@ -26,8 +26,8 @@ jobs:
       - name: 📦 Package library
         run: |
           dotnet restore
-          dotnet build -c Release ./src/PageUp.Observability.sln
-          dotnet pack -c Release -p:Version=${{ inputs.version }} ./src/Nuget.sln
+          dotnet build -c Release
+          dotnet pack -c Release -p:Version=${{ inputs.version }}
 
       - name: ☁ Publish library
         run: |
