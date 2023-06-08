@@ -27,7 +27,7 @@ jobs:
         run: |
           dotnet restore
           dotnet build -c Release
-          dotnet pack -c Release -p:Version=${{ inputs.version }}
+          dotnet pack -c Release -p:Version=${{ inputs.version }} -o ./dist
 
       - name: ☁ Publish library
         run: |
