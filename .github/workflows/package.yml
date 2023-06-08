@@ -3,7 +3,7 @@ name: Deploy (CD)
 on:
   push:
     branches:
-      - main
+      - master
     paths: # Only trigger build when
       # deployment steps change
       - '.github/workflows/cd.yml'
