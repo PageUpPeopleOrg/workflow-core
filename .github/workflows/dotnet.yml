@@ -18,11 +18,11 @@ jobs:
           3.1.x
           6.0.x
     - name: Restore dependencies
-      run: dotnet restore .\WorkflowCore.sln
+      run: dotnet restore ./WorkflowCore.sln
     - name: Build
-      run: dotnet build --no-restore .\WorkflowCore.sln
+      run: dotnet build --no-restore ./WorkflowCore.sln
     - name: Unit Tests
-      run: dotnet test test/WorkflowCore.UnitTests --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+      run: dotnet test test/WorkflowCore.UnitTests --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
   Integration-Tests:
     runs-on: ubuntu-latest
     steps:
@@ -34,11 +34,11 @@ jobs:
             3.1.x
             6.0.x
       - name: Restore dependencies
-        run: dotnet restore .\WorkflowCore.sln
+        run: dotnet restore ./WorkflowCore.sln
       - name: Build
-        run: dotnet build --no-restore .\WorkflowCore.sln
+        run: dotnet build --no-restore ./WorkflowCore.sln
       - name: Integration Tests
-        run: dotnet test test/WorkflowCore.IntegrationTests --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+        run: dotnet test test/WorkflowCore.IntegrationTests --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
   MongoDB-Tests:
     runs-on: ubuntu-latest
     steps:
@@ -50,11 +50,11 @@ jobs:
             3.1.x
             6.0.x
       - name: Restore dependencies
-        run: dotnet restore .\WorkflowCore.sln
+        run: dotnet restore ./WorkflowCore.sln
       - name: Build
-        run: dotnet build --no-restore .\WorkflowCore.sln
+        run: dotnet build --no-restore ./WorkflowCore.sln
       - name: MongoDB Tests
-        run: dotnet test test/WorkflowCore.Tests.MongoDB --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+        run: dotnet test test/WorkflowCore.Tests.MongoDB --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
   MySQL-Tests:
     runs-on: ubuntu-latest
     steps:
@@ -66,11 +66,11 @@ jobs:
             3.1.x
             6.0.x
       - name: Restore dependencies
-        run: dotnet restore .\WorkflowCore.sln
+        run: dotnet restore ./WorkflowCore.sln
       - name: Build
-        run: dotnet build --no-restore .\WorkflowCore.sln
+        run: dotnet build --no-restore ./WorkflowCore.sln
       - name: MySQL Tests
-        run: dotnet test test/WorkflowCore.Tests.MySQL --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+        run: dotnet test test/WorkflowCore.Tests.MySQL --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
   PostgreSQL-Tests:
     runs-on: ubuntu-latest
     steps:
@@ -82,11 +82,11 @@ jobs:
             3.1.x
             6.0.x
       - name: Restore dependencies
-        run: dotnet restore .\WorkflowCore.sln
+        run: dotnet restore ./WorkflowCore.sln
       - name: Build
-        run: dotnet build --no-restore .\WorkflowCore.sln
+        run: dotnet build --no-restore ./WorkflowCore.sln
       - name: PostgreSQL Tests
-        run: dotnet test test/WorkflowCore.Tests.PostgreSQL --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+        run: dotnet test test/WorkflowCore.Tests.PostgreSQL --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
   Redis-Tests:
     runs-on: ubuntu-latest
     steps:
@@ -98,11 +98,11 @@ jobs:
             3.1.x
             6.0.x
       - name: Restore dependencies
-        run: dotnet restore .\WorkflowCore.sln
+        run: dotnet restore ./WorkflowCore.sln
       - name: Build
-        run: dotnet build --no-restore .\WorkflowCore.sln
+        run: dotnet build --no-restore ./WorkflowCore.sln
       - name: Redis Tests
-        run: dotnet test test/WorkflowCore.Tests.Redis --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+        run: dotnet test test/WorkflowCore.Tests.Redis --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
   SQLServer-Tests:
     runs-on: ubuntu-latest
     steps:
@@ -114,11 +114,11 @@ jobs:
             3.1.x
             6.0.x
       - name: Restore dependencies
-        run: dotnet restore .\WorkflowCore.sln
+        run: dotnet restore ./WorkflowCore.sln
       - name: Build
-        run: dotnet build --no-restore .\WorkflowCore.sln
+        run: dotnet build --no-restore ./WorkflowCore.sln
       - name: SQL Server Tests
-        run: dotnet test test/WorkflowCore.Tests.SqlServer --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+        run: dotnet test test/WorkflowCore.Tests.SqlServer --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
   Elasticsearch-Tests:
     runs-on: ubuntu-latest
     steps:
@@ -130,8 +130,8 @@ jobs:
             3.1.x
             6.0.x
       - name: Restore dependencies
-        run: dotnet restore .\WorkflowCore.sln
+        run: dotnet restore ./WorkflowCore.sln
       - name: Build
-        run: dotnet build --no-restore .\WorkflowCore.sln
+        run: dotnet build --no-restore ./WorkflowCore.sln
       - name: Elasticsearch Tests
-        run: dotnet test test/WorkflowCore.Tests.Elasticsearch --no-build --verbosity normal -p:ParallelizeTestCollections=false .\WorkflowCore.sln
+        run: dotnet test test/WorkflowCore.Tests.Elasticsearch --no-build --verbosity normal -p:ParallelizeTestCollections=false ./WorkflowCore.sln
