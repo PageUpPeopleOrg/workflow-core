@@ -32,4 +32,4 @@ jobs:
       - name: ☁ Publish library
         run: |
           echo "☁ pushing packages to Github..."
-          dotnet nuget push ./dist/*.nupkg
+          dotnet nuget push ./dist/*.nupkg -s https://github.com/${{ github.repository }}
