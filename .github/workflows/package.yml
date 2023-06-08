@@ -1,0 +1,58 @@
+name: Deploy (CD)
+
+on:
+  push:
+    branches:
+      - master
+    paths: # Only trigger build when
+      # deployment steps change
+      - '.github/workflows/cd.yml'
+      # or code changes
+      - 'src/**'
+
+jobs:
+  version:
+    name: tag new version
+    runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.version.outputs.new_tag }}
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🏷 Bump version & Create tag version
+        id: version
+        uses: anothrNick/github-tag-action@1.39.0
+        env:
+          DRY_RUN: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_BRANCHES: main
+          DEFAULT_BUMP: patch
+          WITH_V: false
+          INITIAL_VERSION: 3.8.2
+
+  publish:
+    name: package & publish
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v2
+
+      - name: 🛠 Setup dotnet core 6
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: 📦 Package library
+        run: |
+          dotnet restore
+          dotnet build -c Release ./src/PageUp.Observability.sln
+          dotnet pack -c Release -p:Version=${{ needs.version.outputs.new_version }} ./src/Nuget.sln
+
+      - name: ☁ Publish library
+        run: |
+          echo "☁ pushing packages to Github..."
+          dotnet nuget push ./dist/*.nupkg
